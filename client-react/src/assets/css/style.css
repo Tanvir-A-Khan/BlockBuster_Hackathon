@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  @apply max-w-[1200px];
+}
+
+.img-container {
+  max-width: 900px;
+  width: 100%;
+}
+
+.img-container.art {
+  width: 100%;
+}
+.img-container-art-view {
+  max-width: 500px;
+  width: 100%;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
