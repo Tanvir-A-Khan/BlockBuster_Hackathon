@@ -79,6 +79,24 @@ contract ArtMarketplace {
         current.status++;
     }
 
+    function getInitArtworks(address sup) public view returns (uint[] memory list){
+        
+        // Artwork[] memory allartworks = new Artwork[](buyersArtworks[sup].length);
+        uint cnt = suppliersArtworks[sup].length;
+        uint[] memory temp = new uint[](cnt);
+
+        for(uint i=0;i<cnt;i++){
+            Artwork storage current = artworks[suppliersArtworks[sup][i]];
+            if(current.status ==1){
+                temp[i] = (suppliersArtworks[sup][i]+1);
+            }
+
+        }
+
+        return temp;
+
+    }
+
     // Function to get the status of an artwork
     function getStatus(uint _artworkId) public view returns(string memory statusss) {
         uint st = artworks[_artworkId].status;
@@ -170,7 +188,6 @@ contract ArtMarketplace {
         bool _isLimitedEdition
     ) external onlySupplier {
         // Increase the artworkCount
-        artworkCount++;
 
         // Create a new artwork and store its details
         artworks[artworkCount] = Artwork(
@@ -187,6 +204,7 @@ contract ArtMarketplace {
             payable(msg.sender),
             false
         );
+        artworkCount++;
 
         // Store the artwork ID against the supplier's address
         suppliersArtworks[msg.sender].push(artworkCount);
