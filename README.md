@@ -54,12 +54,6 @@ Installation and running of this project to the local machine may vary the depen
   npm install
 
 ```
-6. Install dependencies
-
-```bash
-  npm install
-
-```
 
 
 
